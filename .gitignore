@@ -1,0 +1,10 @@
+# Visual Studio 專案忽略項目
+.vs/
+*.user
+*.suo
+*.db
+*.vsidx
+*.VC.db
+*.VC.opendb
+bin/
+obj/
