@@ -58,8 +58,9 @@ namespace TeaTimeDemo.Controllers
         {
             if (ModelState.IsValid)
             {
-                _db.Categories.Remove(obj);
+                _db.Categories.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "類別新增成功!";
                 return RedirectToAction("Index");
             }
             return View();
@@ -78,7 +79,7 @@ namespace TeaTimeDemo.Controllers
             return View(categoryFromDb);
         }
         [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePOST(int id)
+        public IActionResult DeletePOST(int? id)
         {
             Category? obj = _db.Categories.Find(id);
             if (obj == null)
@@ -89,6 +90,8 @@ namespace TeaTimeDemo.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
     }
        
 
