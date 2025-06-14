@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using TeaTimeDemo.Data;
+using TeaTimeDemo.DataAccess;
+using TeaTimeDemo.DataAccess.Data;
+using TeaTimeDemo.DataAccess.Models;
 using TeaTimeDemo.Models;
 
 namespace TeaTimeDemo.Controllers

@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace TeaTimeDemo.Migrations
+namespace TeaTimeDemo.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class addcategory : Migration
+    public partial class Addcategory : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

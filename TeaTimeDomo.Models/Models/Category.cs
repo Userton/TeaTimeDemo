@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace TeaTimeDemo.Models
+namespace TeaTimeDemo.DataAccess.Models
 {
     public class Category
     {

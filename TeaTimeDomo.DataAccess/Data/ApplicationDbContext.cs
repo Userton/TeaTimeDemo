@@ -1,7 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using TeaTimeDemo.DataAccess.Models;
 using TeaTimeDemo.Models;
 
-namespace TeaTimeDemo.Data
+namespace TeaTimeDemo.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {
