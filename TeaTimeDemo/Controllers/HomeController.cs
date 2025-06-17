@@ -1,7 +1,7 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TeaTimeDemo.DataAccess;
-using TeaTimeDemo.Models;
+using TeaTimeDomo.Models;
 
 namespace TeaTimeDemo.Controllers
 {

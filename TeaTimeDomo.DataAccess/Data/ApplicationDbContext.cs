@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using TeaTimeDemo.DataAccess.Models;
-using TeaTimeDemo.Models;
+using TeaTimeDomo.Models;
 
 namespace TeaTimeDemo.DataAccess.Data
 {

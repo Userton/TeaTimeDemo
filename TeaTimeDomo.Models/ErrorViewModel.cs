@@ -1,4 +1,4 @@
-namespace TeaTimeDemo.Models
+namespace TeaTimeDomo.Models
 {
     public class ErrorViewModel
     {
