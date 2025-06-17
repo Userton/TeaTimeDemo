@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using TeaTimeDemo.DataAccess.Migrations;
+using TeaTimeDemo.DataAccess;
 using TeaTimeDemo.Models;
 
 namespace TeaTimeDemo.Controllers
