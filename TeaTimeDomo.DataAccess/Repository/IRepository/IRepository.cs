@@ -17,5 +17,7 @@ namespace TeaTimeDomo.DataAccess.Repository.IRpository
         void Remove (T entity) ;
         void RemoveRange(IEnumerable<T> entities);
 
+        
+
     }
 }
