@@ -3,8 +3,9 @@ using TeaTimeDemo.DataAccess.Data;
 using TeaTimeDomo.DataAccess.Repository.IRepository;
 using TeaTimeDomo.Models;
 
-namespace TeaTimeDemo.Controllers
+namespace TeaTimeDemo.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class CategoryController : Controller
     {
 

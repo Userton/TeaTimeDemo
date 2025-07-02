@@ -3,8 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using TeaTimeDemo.DataAccess;
 using TeaTimeDomo.Models;
 
-namespace TeaTimeDemo.Controllers
+namespace TeaTimeDemo.Areas.Customer.Controllers
 {
+    [Area("Customer")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
