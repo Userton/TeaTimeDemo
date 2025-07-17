@@ -17,12 +17,12 @@ namespace TeaTimeDomo.DataAccess.Repository
             _db = db;
         }
 
-        public void Add(Category obj)
+        public void Add(Product obj)
         {
             _db.Categories.Add(obj);
         }
         
-        public void Update(Category obj)
+        public void Update(Product obj)
         {
             _db.Categories.Update(obj);
         }
