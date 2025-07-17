@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TeaTimeDomo.Models
 {
-    public class product
+    public class Product
     {
         public int Id { get; set; }
         [Required]
@@ -16,7 +16,7 @@ namespace TeaTimeDomo.Models
         public string Size { get; set; }
         [Required]
         [Range(1, 10000)]
-        public double price { get; set; }
+        public double Price { get; set; }
         public string Description { get; set; }
     }
 }
