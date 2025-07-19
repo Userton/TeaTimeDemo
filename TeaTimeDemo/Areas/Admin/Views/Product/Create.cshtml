@@ -16,10 +16,11 @@
         <div class="mb-3 row p-1">
             <label asp-for="CategoryId" class="p-0"></label>
             <select asp-for="CategoryId" asp-items="ViewBag.CategoryList"
-            class="form-selected">
-            <option disabled>請選擇類別</option>
+             class="form-select">
+            <option disabled selected>請選擇類別</option>
             </select>
             <span asp-validation-for="CategoryId" class="text-danger"></span>
+        </div>
         <div class="mb-3 row p-1">
             <label asp-for="Size" class="p-0"></label>
             <input asp-for="Size" class="form-control" />
@@ -48,9 +49,9 @@
     </div>
 </form>
 
+
 @section Scripts{
-    @{
+    
         <partial name="_ValidationScriptsPartial" />
-    }
-} 
-@Html.ValidationMessageFor(model => model.Name)
+    
+}
