@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using TeaTimeDemo.DataAccess.Data;
 using TeaTimeDomo.DataAccess.Repository.IRepository;
 using TeaTimeDomo.Models;
@@ -23,11 +25,17 @@ namespace TeaTimeDemo.Areas.Admin.Controllers
 
         public IActionResult Create()
         {
+            IEnumerable<SelectListItem> CategoryList =
+            _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+            {
+                Text = u.Name,
+                Value = u.Id.ToString()
+            });
+            ViewBag.CategoryList = CategoryList;
             return View();
         }
-
         [HttpPost]
-        public IActionResult Create(Product obj)
+            public IActionResult Create(Product obj)
         {
     
             if (ModelState.IsValid)
