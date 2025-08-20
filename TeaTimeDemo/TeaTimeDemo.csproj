@@ -18,6 +18,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\TeaTimeDomo.DataAccess\TeaTimeDomo.DataAccess.csproj" />
+    <ProjectReference Include="..\TeaTimeDomo.Models\TeaTimeDomo.Models.csproj" />
+    <ProjectReference Include="..\TeaTimeDomo.Utility\TeaTimeDomo.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>
