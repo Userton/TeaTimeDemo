@@ -2,8 +2,10 @@
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using TeaTimeDemo.DataAccess.Data;
+using TeaTimeDomo.DataAccess.Repository;
 using TeaTimeDomo.DataAccess.Repository.IRepository;
 using TeaTimeDomo.Models;
+using TeaTimeDomo.Models.ViewModels;
 
 namespace TeaTimeDemo.Areas.Admin.Controllers
 {
@@ -23,88 +25,103 @@ namespace TeaTimeDemo.Areas.Admin.Controllers
             return View(objProductList);
         }
 
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
-            IEnumerable<SelectListItem> CategoryList =
-            _unitOfWork.Category.GetAll().Select(u => new SelectListItem
+            ProductVM productVM = new()
             {
-                Text = u.Name,
-                Value = u.Id.ToString()
-            });
-            //ViewBag.CategoryList = CategoryList;
-            ViewData["CategoryList"] = CategoryList;
-            return View();
-        }
-        [HttpPost]
-            public IActionResult Create(Product obj)
-        {
-    
-            if (ModelState.IsValid)
+                CategoryList = _unitOfWork.Category.GetAll().Select(u =>
+                new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                }),
+                Product = new Product()
+            };
+            if (id == null)
             {
-                _unitOfWork.Product.Add(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "類別新增成功!";
-                return RedirectToAction("Index");
+                return View(productVM);
             }
-            return View();
-        }
-        public IActionResult Edit(int? id)
-        {
-            if (id == null || id == 0)
+            else
             {
-                return NotFound();
-            }
-            Product? ProductFromDb = _unitOfWork.Product.Get(u => u.Id == id);
-            if (ProductFromDb == null)
-            {
-                return NotFound();
+                productVM.Product = _unitOfWork.Product.Get(u =>
+                u.Id == id);
+                return View(productVM);
             }
 
-            return View(ProductFromDb);
+
         }
         [HttpPost]
-        public IActionResult Edit(Product obj)
+        public IActionResult Upsert(ProductVM productVM, IFormFile? file)
         {
             if (ModelState.IsValid)
             {
-                _unitOfWork.Product.Update(obj);
+                _unitOfWork.Product.Add(productVM.Product);
                 _unitOfWork.Save();
-                TempData["success"] = "類別更新成功!";
+                TempData["success"] = " 產品新增成功! ";
                 return RedirectToAction("Index");
             }
-            return View();
-        }
-        public IActionResult Delete(int? id)
-        {
-            if (id == null || id == 0)
+            else
             {
-                return NotFound();
-            }
-            Product ProductFromDb = _unitOfWork.Product.Get(u => u.Id ==id);
-            if (ProductFromDb == null) 
-            { 
-                return NotFound();
-            }
-          
-            return View(ProductFromDb);
-        }
-        [HttpPost, ActionName("Delete")]
-        public IActionResult DeletePOST(int? id)
-        {
-            Product? obj = _unitOfWork.Product.Get(u => u.Id == id);
-            if (obj == null)
-            {
-                return NotFound();
-            }
-            _unitOfWork.Product.Remove(obj);
-            _unitOfWork.Save();
-            TempData["success"] = "類別刪除成功!";
-            return RedirectToAction("Index");
-        }
-        private readonly ApplicationDbContext _db;
+                productVM.CategoryList =
+                _unitOfWork.Category.GetAll().Select(u =>
+                new SelectListItem
+                {
+                    Text = u.Name,
+                    Value = u.Id.ToString()
+                });
 
+                return View(productVM);
+            }
+
+        }
     }
-       
-
 }
-       
+
+     /* [HttpPost]
+
+        public IActionResult Edit(Product obj)
+         {
+             if (ModelState.IsValid)
+             {
+                 _unitOfWork.Product.Update(obj);
+                 _unitOfWork.Save();
+                 TempData["success"] = "類別更新成功!";
+                 return RedirectToAction("Index");
+             }
+             return View();
+         }
+         public IActionResult Delete(int? id)
+         {
+             if (id == null || id == 0)
+             {
+                 return NotFound();
+             }
+             Product ProductFromDb = _unitOfWork.Product.Get(u => u.Id ==id);
+             if (ProductFromDb == null) 
+             { 
+                 return NotFound();
+             }
+
+             return View(ProductFromDb);
+         }
+         [HttpPost, ActionName("Delete")]
+         public IActionResult DeletePOST(int? id)
+         {
+             Product? obj = _unitOfWork.Product.Get(u => u.Id == id);
+             if (obj == null)
+             {
+                 return NotFound();
+             }
+             _unitOfWork.Product.Remove(obj);
+             _unitOfWork.Save();
+             TempData["success"] = "類別刪除成功!";
+             return RedirectToAction("Index");
+         }
+         private readonly ApplicationDbContext _db;
+        */
+
+
+
+
+    
+
